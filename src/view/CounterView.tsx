@@ -1,15 +1,18 @@
 import type { FC } from 'react';
 import React from 'react';
 import { useCounterViewModel } from '../controller/counterViewModel';
-import { useCounterStoreImplementation } from '../data/counterStoreImplementation';
+import { useCounterStoreImplementation } from '../zustand/counterStoreImplementation';
 
 const Button: FC<any> = ({ children, ...props }) => (
   <button
     type="button"
+    role="button"
     style={{
+      color: 'white',
       border: '1px solid grey',
       background: 'transparent',
       borderRadius: 2,
+      padding: '4px 8px',
     }}
     {...props}
   >
@@ -17,7 +20,7 @@ const Button: FC<any> = ({ children, ...props }) => (
   </button>
 );
 
-const Spinner = () => <>...</>;
+const Spinner = ({ tip }: { tip?: string }) => <>{tip}...</>;
 
 const Count: FC = ({ children }) => <h3>{children}</h3>;
 
@@ -27,29 +30,36 @@ const CounterView = () => {
     count,
     shouldDisableButton,
     shouldShowSpinner,
-    getCounter,
+    initCounter,
     incrementCounter,
+    isUpdating,
     decrementCounter,
   } = useCounterViewModel(store);
 
   React.useEffect(() => {
-    getCounter();
-  }, [getCounter]);
+    initCounter();
+  }, [initCounter]);
 
-  return (
-    <div>
-      {shouldShowSpinner ? (
-        <Spinner />
-      ) : (
-        <>
-          <Button disabled={shouldDisableButton} onClick={decrementCounter}>
-            dec
-          </Button>
-          <Count>{count}</Count>
-          <Button onClick={incrementCounter}>inc</Button>
-        </>
-      )}
-    </div>
+  return shouldShowSpinner ? (
+    <Spinner />
+  ) : (
+    <>
+      <div
+        style={{
+          display: 'flex',
+          gap: 40,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Button disabled={shouldDisableButton} onClick={decrementCounter}>
+          dec
+        </Button>
+        <Count>{count}</Count>
+        <Button onClick={incrementCounter}>inc</Button>
+      </div>
+      {isUpdating && <Spinner tip="Syncing" />}
+    </>
   );
 };
 

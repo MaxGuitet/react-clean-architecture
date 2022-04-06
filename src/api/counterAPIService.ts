@@ -10,8 +10,11 @@ function getCounter(): Promise<Counter> {
 }
 
 function updateCounter(counter: Counter): Promise<Counter> {
-  return Promise.resolve(
-    localStorage.setItem(STORAGE_KEY, `${counter.value}`)
+  return new Promise<void>(res =>
+    setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, `${counter.value}`);
+      res();
+    }, 1000)
   ).then(() => create(counter.value));
 }
 

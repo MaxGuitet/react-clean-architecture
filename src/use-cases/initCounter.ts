@@ -2,8 +2,8 @@ import type { CounterStore } from '../domain/counterStore';
 
 type GetCounterStore = Pick<CounterStore, "loadInitialCounter">;
 
-const getCounterUseCase = (store: GetCounterStore) => {
+const initCounterUseCase = (store: GetCounterStore): void => {
     store.loadInitialCounter();
 };
 
-export { getCounterUseCase };
+export { initCounterUseCase };
