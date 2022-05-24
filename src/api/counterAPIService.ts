@@ -1,5 +1,5 @@
 import type { Counter } from '../domain/counterEntity';
-import { create } from '../domain/counterModel';
+import { create } from '../domain/counterEntityRules';
 
 const STORAGE_KEY = 'counter';
 

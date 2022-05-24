@@ -1,4 +1,4 @@
-import { decrement } from "../domain/counterModel";
+import { decrement } from "../domain/counterEntityRules";
 import { updateCounterUseCase } from "./updateCounter";
 import type { UpdateCounterStore } from "./updateCounter";
 

@@ -4,6 +4,8 @@ import { decrementCounterUseCase } from '../use-cases/decrementCounter';
 import { incrementCounterUseCase } from '../use-cases/incrementCounter';
 import { initCounterUseCase } from '../use-cases/initCounter';
 
+// Make independant from React?
+
 const useCounterViewModel = (store: CounterStore) => {
   const initCounter = React.useCallback(() => {
     initCounterUseCase({

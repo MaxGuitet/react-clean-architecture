@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Counter } from '../domain/counterEntity';
 import { CounterStore } from '../domain/counterStore';
-import { useCounterStore } from './counterStore';
+import { useCounterStore } from '../zustand/counterStore';
 import {
   getCounter,
   updateCounter as updateCounterService,

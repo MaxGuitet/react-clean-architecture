@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import { useCounterViewModel } from '../controller/counterViewModel';
-import { useCounterStoreImplementation } from '../zustand/counterStoreImplementation';
+import { useCounterStoreImplementation } from '../model/counterStoreZustandImplementation';
 
 const Button: FC<any> = ({ children, ...props }) => (
   <button

@@ -6,8 +6,8 @@ import {
   getCounterAction,
   setCounterAction,
   updateCounterAction,
-} from './counterActions';
-import type { CounterStoreState } from './counterReducer';
+} from '../redux/counterActions';
+import type { CounterStoreState } from '../redux/counterReducer';
 
 const counterSelector = (state: CounterStoreState) => state;
 
